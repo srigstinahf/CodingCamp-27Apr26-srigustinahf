@@ -1,0 +1,584 @@
+/* ============================================================
+   CSS Custom Properties (Light Mode — default)
+   ============================================================ */
+:root {
+  --bg-page:        #f0f2f5;
+  --bg-card:        #ffffff;
+  --bg-input:       #ffffff;
+  --bg-header:      #4f46e5;
+
+  --text-primary:   #1a1a2e;
+  --text-secondary: #555770;
+  --text-inverse:   #ffffff;
+  --text-muted:     #888ea8;
+
+  --border-color:   #e2e5f0;
+  --border-input:   #c8cde0;
+
+  --accent:         #4f46e5;
+  --accent-hover:   #4338ca;
+  --accent-light:   #eef2ff;
+
+  --btn-secondary-bg:    #f1f5f9;
+  --btn-secondary-text:  #475569;
+  --btn-secondary-hover: #e2e8f0;
+
+  --danger:         #ef4444;
+  --danger-hover:   #dc2626;
+  --danger-light:   #fef2f2;
+
+  --success:        #22c55e;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10);
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+
+  --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   Global Error Banner
+   ============================================================ */
+.global-error {
+  background-color: var(--danger);
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.global-error.hidden {
+  display: none;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.header {
+  background-color: var(--bg-header);
+  color: var(--text-inverse);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.theme-toggle {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+.theme-toggle:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ============================================================
+   Main Layout (2-column on ≥ 640px)
+   ============================================================ */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .main-layout {
+    grid-template-columns: 340px 1fr;
+    padding: 24px 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main-layout {
+    padding: 28px 32px;
+  }
+}
+
+/* ============================================================
+   Card
+   ============================================================ */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.card__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   Sidebar (left column)
+   ============================================================ */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================================
+   Content (right column)
+   ============================================================ */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================================
+   Form Elements
+   ============================================================ */
+
+/* <p> digunakan sebagai form-group untuk grouping label + input + error */
+p.form-group {
+  margin-bottom: 14px;
+  /* Reset default <p> margin agar konsisten */
+  display: block;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 0.9375rem;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+.form-input.input-error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.12);
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888ea8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+/* <output> digunakan untuk pesan error validasi form */
+output.error-message {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--danger);
+  margin-top: 4px;
+  min-height: 1.2em;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  font-size: 0.9375rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.btn--secondary {
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--border-color);
+}
+
+.btn--secondary:hover {
+  background-color: var(--btn-secondary-hover);
+}
+
+.btn--danger {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 5px 10px;
+  font-size: 0.8125rem;
+}
+
+.btn--danger:hover {
+  background-color: var(--danger-light);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Add Category Form */
+.add-category-form p.form-group {
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   Balance Card
+   ============================================================ */
+.balance-card {
+  text-align: center;
+  padding: 24px 20px;
+}
+
+.balance-card__label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.balance-card__amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   Chart Card
+   ============================================================ */
+.chart-card {
+  flex: 1;
+}
+
+/* <figure> digunakan sebagai container chart visual */
+figure#chart-container {
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* reset default <figure> margin */
+}
+
+#expense-chart {
+  max-height: 300px;
+}
+
+/* <figcaption> digunakan sebagai empty state chart */
+figcaption#chart-empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+figcaption#chart-empty.hidden {
+  display: none;
+}
+
+/* ============================================================
+   Transaction Section
+   ============================================================ */
+.transaction-section {
+  max-width: 1200px;
+  margin: 0 auto 32px;
+  padding: 0 16px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .transaction-section {
+    padding: 0 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .transaction-section {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+/* Transaction header row (title + sort control) */
+header.transaction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px 0 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* <fieldset> digunakan untuk grouping sort control */
+fieldset.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* <legend> sebagai label sort control */
+legend.sort-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  float: left; /* agar legend sejajar dengan select */
+  padding: 0;
+  margin-right: 8px;
+  line-height: 1.6;
+}
+
+.sort-select {
+  width: auto;
+  min-width: 160px;
+  padding: 6px 32px 6px 10px;
+  font-size: 0.875rem;
+}
+
+/* ============================================================
+   Transaction List — <ul> semantik untuk daftar transaksi
+   ============================================================ */
+ul.transaction-list {
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+/* Scrollbar styling */
+ul.transaction-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+ul.transaction-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+ul.transaction-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+/* ============================================================
+   Transaction Item — <li> semantik
+   ============================================================ */
+li.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.15s;
+}
+
+li.transaction-item:last-child {
+  border-bottom: none;
+}
+
+li.transaction-item:hover {
+  background-color: var(--accent-light);
+  border-radius: var(--radius-sm);
+}
+
+/* Empty state item di dalam <ul> */
+li#list-empty {
+  list-style: none;
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.transaction-item__name {
+  flex: 1;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-item__amount {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Category Badge */
+.category-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  /* Warna latar dan teks diterapkan via inline style di UIRenderer.renderList()
+     menggunakan getCategoryColor() + isBrightColor() — mendukung jumlah
+     kategori tak terbatas dan konsisten dengan warna chart */
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Utility
+   ============================================================ */
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   Responsive tweaks (≤ 400px)
+   ============================================================ */
+@media (max-width: 400px) {
+  .header__title {
+    font-size: 1rem;
+  }
+
+  .balance-card__amount {
+    font-size: 1.6rem;
+  }
+
+  .transaction-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .transaction-item__name {
+    width: 100%;
+    white-space: normal;
+  }
+}
+
+/* ============================================================
+   Dark Mode
+   Override CSS custom properties via [data-theme="dark"].
+   Semua komponen otomatis mengikuti karena menggunakan variabel.
+   ============================================================ */
+[data-theme="dark"] {
+  --bg-page:        #0f0f1a;
+  --bg-card:        #1a1a2e;
+  --bg-input:       #16213e;
+  --bg-header:      #1e1b4b;
+
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+
+  --border-color:   #2d2d4e;
+  --border-input:   #3d3d6e;
+
+  --accent:         #818cf8;
+  --accent-hover:   #6366f1;
+  --accent-light:   #1e1b4b;
+
+  --btn-secondary-bg:    #1e293b;
+  --btn-secondary-text:  #94a3b8;
+  --btn-secondary-hover: #263148;
+
+  --danger-light:   #2d1515;
+}
+
+/* Dark mode: form select arrow warna terang */
+[data-theme="dark"] .form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394a3b8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+}
+
+/* Dark mode: scrollbar */
+[data-theme="dark"] ul.transaction-list::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+}
+
+/* Dark mode: chart canvas background */
+[data-theme="dark"] #chart-container canvas {
+  filter: brightness(0.95);
+}
