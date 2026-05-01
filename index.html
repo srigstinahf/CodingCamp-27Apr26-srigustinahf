@@ -117,26 +117,28 @@
   </main>
 
   <!-- Transaction List -->
-  <section class="transaction-section" aria-labelledby="list-heading">
-    <header class="transaction-header">
-      <h2 id="list-heading" class="card__title">Riwayat Transaksi</h2>
-      <fieldset class="sort-control">
-        <legend class="sort-label">Urutkan:</legend>
-        <select id="sort-control" class="form-input form-select sort-select">
-          <option value="date-desc">Terbaru</option>
-          <option value="amount-desc">Jumlah: Terbesar</option>
-          <option value="amount-asc">Jumlah: Terkecil</option>
-          <option value="category-asc">Kategori: A–Z</option>
-        </select>
-      </fieldset>
-    </header>
+  <div class="transaction-wrapper">
+    <section class="transaction-section" aria-labelledby="list-heading">
+      <header class="transaction-header">
+        <h2 id="list-heading" class="card__title">Riwayat Transaksi</h2>
+        <fieldset class="sort-control">
+          <legend class="sort-label">Urutkan:</legend>
+          <select id="sort-control" class="form-input form-select sort-select">
+            <option value="date-desc">Terbaru</option>
+            <option value="amount-desc">Jumlah: Terbesar</option>
+            <option value="amount-asc">Jumlah: Terkecil</option>
+            <option value="category-asc">Kategori: A–Z</option>
+          </select>
+        </fieldset>
+      </header>
 
-    <ul id="transaction-list" class="transaction-list">
-      <li id="list-empty" class="empty-state">
-        Belum ada transaksi. Tambahkan pengeluaran pertama Anda!
-      </li>
-    </ul>
-  </section>
+      <ul id="transaction-list" class="transaction-list">
+        <li id="list-empty" class="empty-state">
+          Belum ada transaksi. Tambahkan pengeluaran pertama Anda!
+        </li>
+      </ul>
+    </section>
+  </div>
 
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
